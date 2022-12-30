@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: saas-service1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER:10.50.133.144:8848}
+        group: DEFAULT_GROUP
+        username: nacos
+        password: Nacos@qwer.com
+        namespace: local_nacos
+      config:
+        server-addr: ${NACOS_SERVER:10.50.133.144:8848}
+        username: nacos
+        password: Nacos@qwer.com
+        group: DEFAULT_GROUP
+        file-extension: yaml
+
