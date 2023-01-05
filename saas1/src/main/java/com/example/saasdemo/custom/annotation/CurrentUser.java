@@ -1,4 +1,4 @@
-package com.example.saasdemo.config;
+package com.example.saasdemo.custom.annotation;
 
 import java.lang.annotation.*;
 

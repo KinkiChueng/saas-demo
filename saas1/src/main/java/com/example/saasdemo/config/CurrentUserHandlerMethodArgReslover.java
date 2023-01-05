@@ -1,5 +1,6 @@
 package com.example.saasdemo.config;
 
+import com.example.saasdemo.custom.annotation.CurrentUser;
 import com.gwmfc.domain.User;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;

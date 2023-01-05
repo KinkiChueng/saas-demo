@@ -9,4 +9,5 @@
     <select id="selectConfigValue" resultType="java.lang.String">
         select `value` from saas_config where property_name = #{propertyName}
     </select>
+    <select id="selectConfig" resultType="java.util.Map"></select>
 </mapper>

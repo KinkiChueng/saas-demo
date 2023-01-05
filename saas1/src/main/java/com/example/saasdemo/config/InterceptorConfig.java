@@ -26,6 +26,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new CurrentUserHandlerMethodArgReslover());
+//        resolvers.add(new FixValueHandlerMethodArgReslover());
         WebMvcConfigurer.super.addArgumentResolvers(resolvers);
     }
 
