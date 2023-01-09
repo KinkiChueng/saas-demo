@@ -1,7 +1,7 @@
 package com.example.saasdemo.intercepter;
 
 import com.example.saasdemo.api.MetadataFeignApi;
-import com.example.saasdemo.config.MappingDataSource;
+import com.example.saasdemo.constant.MappingDataSourceConstant;
 import com.example.saasdemo.util.ApplicationContextConfigUtil;
 import com.example.saasdemo.dto.DataSourceDto;
 import com.example.saasdemo.dynamic.DataSourceInfoService;
@@ -29,7 +29,7 @@ public class TenantIntercepter implements HandlerInterceptor {
     private MetadataFeignApi metadataFeignApi;
 
     @Autowired
-    private MappingDataSource mappingDataSource;
+    private MappingDataSourceConstant mappingDataSourceConstant;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -44,7 +44,7 @@ public class TenantIntercepter implements HandlerInterceptor {
         //将解析的用户结果先放入session中
         request.getSession().setAttribute("currentUser", user);
 //        String tenantId = JwtUtil.decode(token, "tenantId");
-        Map<Long, Map<String, String>> allDatasourceMap = mappingDataSource.getDatasource();
+        Map<Long, Map<String, String>> allDatasourceMap = mappingDataSourceConstant.getDatasource();
         Map<String, String> tenantDataSource = allDatasourceMap.get(user.getTenantId());
         if (null != tenantDataSource && tenantDataSource.size() > 0) {
             DataSourceDto dataSourceDto = MapToObjUtil.mapToObj(tenantDataSource, DataSourceDto.class);

@@ -1,5 +1,6 @@
 package com.example.saasdemo.config;
 
+import com.example.saasdemo.constant.RefreshUrlConstant;
 import com.example.saasdemo.intercepter.TenantIntercepter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +15,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //需要拦截的路径，/**表示拦截所有请求
-        String[] addPathPatterns={"/**"};
+        String[] addPathPatterns={RefreshUrlConstant.WHOLE_URL};
         //不需要拦截的路径
-        String[] excludePathPatterns={"/nacos/refreshValueScope","/nacos/updateConfigValue","/error"};
+        String[] excludePathPatterns={RefreshUrlConstant.UPDATE_CONFIG_URL, RefreshUrlConstant.REFRESH_CONFIG_URL,RefreshUrlConstant.ERROR_URL};
 
         registry.addInterceptor(getMybatisInterceptor())
                 .addPathPatterns(addPathPatterns)

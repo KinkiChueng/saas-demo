@@ -1,5 +1,7 @@
 package com.example.saasdemo.config;
 
+import com.example.saasdemo.constant.MappingDataSourceConstant;
+import com.example.saasdemo.constant.RefreshUrlConstant;
 import com.example.saasdemo.util.ApplicationContextConfigUtil;
 import com.example.saasdemo.custom.annotation.FixValue;
 import lombok.extern.slf4j.Slf4j;
@@ -62,18 +64,17 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
                 ServletContext servletContext = webApplicationContext.getServletContext();
                 Long tenantId = (Long) servletContext.getAttribute("tenantId");
                 if (null == tenantId) {
-                    //fixme
-                    tenantId = 39L;
+                    tenantId = RefreshUrlConstant.DEFAULT_TENANT_ID;
                 }
                 ResultSet resultSet = null;
                 Connection conn = null;
                 PreparedStatement preparedStatement = null;
                 try {
                     TypeConverter typeConverter = new SimpleTypeConverter();
-                    String defaultDbDriverName = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue("${spring.datasource.cheetahdb.driverClassName}"), String.class);
-                    String defaultDbUrl = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue("${spring.datasource.cheetahdb.url}"), String.class);
-                    String defaultDbUser = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue("${spring.datasource.cheetahdb.username}"), String.class);
-                    String defaultDdPassword = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue("${spring.datasource.cheetahdb.password}"), String.class);
+                    String defaultDbDriverName = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue(RefreshUrlConstant.DRIVER_CLASS), String.class);
+                    String defaultDbUrl = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue(RefreshUrlConstant.DATASOURCE_URL), String.class);
+                    String defaultDbUser = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue(RefreshUrlConstant.DATASOURCE_USERNAME), String.class);
+                    String defaultDdPassword = typeConverter.convertIfNecessary(beanFactory.resolveEmbeddedValue(RefreshUrlConstant.DATASOURCE_PASSWORD), String.class);
 
                     Class.forName(defaultDbDriverName);
                     conn = DriverManager.getConnection(defaultDbUrl, defaultDbUser, defaultDdPassword);

@@ -1,5 +1,6 @@
 package com.example.saasdemo.config;
 
+import com.example.saasdemo.constant.RefreshUrlConstant;
 import com.example.saasdemo.intercepter.RefreshScopeFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +14,8 @@ public class FilterRegistrationConfiguration {
     public FilterRegistrationBean someFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(repeatableFilter());
-        registration.addUrlPatterns("/nacos/refreshValueScope");
-        registration.setName("refreshScopeFilter");
+        registration.addUrlPatterns(RefreshUrlConstant.REFRESH_CONFIG_URL);
+        registration.setName(RefreshUrlConstant.FILTER_NAME);
         registration.setOrder(1);
         return registration;
     }
