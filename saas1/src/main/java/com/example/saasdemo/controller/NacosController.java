@@ -78,7 +78,7 @@ public class NacosController {
     }
 
     @PostMapping("/refreshValueScope")
-    Result refreshValueScope(@RequestBody ConfigDto configDto) {
+    Result refreshValueScope() {
         return Result.ok(tenantId);
     }
 

@@ -3,6 +3,7 @@ package com.example.saasdemo.dynamic;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.example.saasdemo.dto.DataSourceDto;
 import com.gwmfc.util.DatabaseEnum;
+import com.gwmfc.util.GsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +57,6 @@ public class DataSourceInfoService {
                 dynamicDataSource.setTargetDataSources(map);
 
             }
-
     }
 
     private String getUrlToDruid(DataSourceDto dataSourceDto) {

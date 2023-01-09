@@ -15,4 +15,8 @@ spring:
         password: Nacos@qwer.com
         group: DEFAULT_GROUP
         file-extension: yaml
+        shared-configs[0]:
+          data-id: multi-tenant-datasource.yaml
+          group: DEFAULT_GROUP
+          refresh: true
 

@@ -1,6 +1,5 @@
 package com.example.saasdemo.intercepter;
 
-import com.example.saasdemo.request.RepeatableHttpServletRequest;
 import com.example.saasdemo.util.AnnotationClassUtil;
 import com.example.saasdemo.util.ApplicationContextConfigUtil;
 import com.example.saasdemo.util.StringUtil;
@@ -11,7 +10,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.Map;
 @Slf4j
 public class RefreshScopeFilter implements Filter {
 
-    public static String ReadAsChars(HttpServletRequest httpServletRequest) {
+    public static String ReadAsChars(ServletRequest httpServletRequest) {
 
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder("");
@@ -51,8 +49,7 @@ public class RefreshScopeFilter implements Filter {
         try {
             WebApplicationContext webApplicationContext = (WebApplicationContext) ApplicationContextConfigUtil.getApplicationContext();
             RefreshScope refreshScope = webApplicationContext.getBean(RefreshScope.class);
-            RepeatableHttpServletRequest repeatableHttpServletRequest = new RepeatableHttpServletRequest((HttpServletRequest) servletRequest);
-            String requestBody = ReadAsChars(repeatableHttpServletRequest);
+            String requestBody = ReadAsChars(servletRequest);
             Map configDto = GsonUtil.jsonToMap(requestBody);
 
             if (configDto != null) {
@@ -70,7 +67,7 @@ public class RefreshScopeFilter implements Filter {
                     });
                 }
             }
-            filterChain.doFilter(repeatableHttpServletRequest, servletResponse);
+            filterChain.doFilter(servletRequest, servletResponse);
         } catch (Exception e) {
             log.error("刷新@FixValue配置失败！{}", e);
         }
