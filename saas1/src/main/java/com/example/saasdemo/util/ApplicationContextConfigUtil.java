@@ -1,4 +1,4 @@
-package com.example.saasdemo.config;
+package com.example.saasdemo.util;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

@@ -1,5 +1,6 @@
 package com.example.saasdemo.dynamic;
 
+import com.gwmfc.util.GsonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
@@ -48,7 +49,6 @@ public class DynamicDataSourceContextHolder {
      */
     public static void setDataSourceKey(String key) {
         log.info("dataSourceKeys.toString():{}",dataSourceKeys.toString());
-        log.info("CONTEXT_HOLDER.toString():{}",CONTEXT_HOLDER.toString());
         CONTEXT_HOLDER.set(key);
     }
 

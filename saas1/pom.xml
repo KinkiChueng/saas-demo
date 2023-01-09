@@ -98,6 +98,14 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.4.2</version>
         </dependency>
+
+        <!--binlog支持-->
+        <dependency>
+            <groupId>com.github.shyiko</groupId>
+            <artifactId>mysql-binlog-connector-java</artifactId>
+            <version>0.18.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

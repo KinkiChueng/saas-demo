@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.saasdemo.dao.datasource.DataSourceMapper">
+    <update id="updateConfigValue">
+        update saas_config set `value` = #{configDto.configValue} where property_name = #{configDto.configName} and tenant_id = #{configDto.tenantId}
+    </update>
 
     <select id="selectInfo" resultType="java.lang.String">
         select * from saas_test
     </select>
 
     <select id="selectConfigValue" resultType="java.lang.String">
-        select `value` from saas_config where property_name = #{propertyName}
+        select `value` from saas_config where property_name = #{propertyName} and tenant_id = #{tenantId}
     </select>
-    <select id="selectConfig" resultType="java.util.Map"></select>
+
 </mapper>

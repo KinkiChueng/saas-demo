@@ -48,7 +48,6 @@ public class DynamicDataSourceContextHolder {
      */
     public static void setDataSourceKey(String key) {
         log.info("dataSourceKeys.toString():{}",dataSourceKeys.toString());
-        log.info("CONTEXT_HOLDER.toString():{}",CONTEXT_HOLDER.toString());
         CONTEXT_HOLDER.set(key);
     }
 

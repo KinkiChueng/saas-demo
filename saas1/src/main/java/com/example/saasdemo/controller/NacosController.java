@@ -5,23 +5,21 @@ import com.example.saasdemo.api.SaasFeignApi;
 import com.example.saasdemo.custom.annotation.CurrentUser;
 import com.example.saasdemo.custom.annotation.FixValue;
 import com.example.saasdemo.dao.datasource.DataSourceMapper;
+import com.example.saasdemo.dto.ConfigDto;
 import com.example.saasdemo.dto.DataSourceDto;
 import com.example.saasdemo.dynamic.DynamicDataSourceContextHolder;
+import com.example.saasdemo.service.ConfigService;
 import com.gwmfc.domain.User;
 import com.gwmfc.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 @Slf4j
 @RestController
 @RefreshScope
-@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 @RequestMapping("/nacos")
 public class NacosController {
     @Resource
@@ -33,12 +31,15 @@ public class NacosController {
     @Resource
     private DataSourceMapper dataSourceMapper;
 
+    @Resource
+    private ConfigService configService;
+
     @FixValue(propertyName = "${nacos.tenant}")
     private String tenantId;
 
     @GetMapping("/getTenantId")
     String selectConfigValue() {
-        return dataSourceMapper.selectConfigValue("nacos.tenant");
+        return dataSourceMapper.selectConfigValue("nacos.tenant",65L);
     }
 
     @GetMapping("/getTenantIdByFixValue")
@@ -49,7 +50,7 @@ public class NacosController {
     @GetMapping("/getTenantIdDefault")
     String selectConfigValueFromDefault(@CurrentUser User user) {
         DynamicDataSourceContextHolder.setDataSourceKey("default");
-        String config = dataSourceMapper.selectConfigValue("nacos.tenant");
+        String config = dataSourceMapper.selectConfigValue("nacos.tenant", 65L);
         DataSourceDto dataSourceDto = metadataFeignApi.getOne(user.getTenantId()).getData();
         DynamicDataSourceContextHolder.setDataSourceKey(dataSourceDto.getCode());
         return config;
@@ -64,5 +65,26 @@ public class NacosController {
     @GetMapping("/getFeignInfo")
     Result getFeignInfo() {
         return Result.ok(String.valueOf(saasFeignApi.answerFeignInfo().getData()));
+    }
+
+    @PostMapping("/updateConfigValue")
+    Result updateConfigValue(@RequestBody ConfigDto configDto) {
+        configService.updateConfigValue(configDto);
+
+//        RestTemplate restTemplate = new RestTemplate();
+//        restTemplate.postForObject("http://localhost:9701/nacos/refreshValueScope", configDto, String.class);
+
+        return Result.ok();
+    }
+
+    @PostMapping("/refreshValueScope")
+    Result refreshValueScope(@RequestBody ConfigDto configDto) {
+        return Result.ok(tenantId);
+    }
+
+    @GetMapping("/deleteConfigValue")
+    Result deleteConfigValue(@RequestParam ConfigDto configDto) {
+        configService.updateConfigValue(configDto);
+        return Result.ok();
     }
 }

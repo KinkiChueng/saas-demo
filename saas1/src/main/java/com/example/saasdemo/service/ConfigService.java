@@ -1,18 +1,19 @@
 package com.example.saasdemo.service;
 
 import com.example.saasdemo.dao.datasource.DataSourceMapper;
+import com.example.saasdemo.dto.ConfigDto;
+import com.example.saasdemo.dynamic.DynamicDataSourceContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class ConfigService {
     @Resource
     private DataSourceMapper dataSourceMapper;
 
-    public List<Map<String, String>> selectConfig(String tenantId, String configName) {
-        return dataSourceMapper.selectConfig(tenantId,configName);
+    public void updateConfigValue(ConfigDto configDto) {
+        DynamicDataSourceContextHolder.setDataSourceKey("default");
+        dataSourceMapper.updateConfigValue(configDto);
     }
 }

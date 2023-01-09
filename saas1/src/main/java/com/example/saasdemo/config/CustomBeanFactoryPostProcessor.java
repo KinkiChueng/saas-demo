@@ -1,6 +1,6 @@
 package com.example.saasdemo.config;
 
-import com.example.saasdemo.config.ApplicationContextConfigUtil;
+import com.example.saasdemo.util.ApplicationContextConfigUtil;
 import com.example.saasdemo.custom.annotation.FixValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
