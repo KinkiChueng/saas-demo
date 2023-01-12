@@ -3,14 +3,16 @@ package com.example.saasdemo.util;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+/**
+ * @author zhangjinqi
+ */
 public class MapToObjUtil {
     /**
-     * 把source转为target
-     * @param source source
-     * @param target target
-     * @param <T> 返回值类型
-     * @return 返回值
-     * @throws Exception newInstance可能会抛出的异常
+     * map转对象
+     * @param source
+     * @param target
+     * @return
+     * @throws Exception
      */
     public static <T> T mapToObj(Map source, Class<T> target) throws Exception {
         Field[] fields = target.getDeclaredFields();

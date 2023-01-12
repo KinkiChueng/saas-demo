@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
+/**
+ * @author zhangjinqi
+ */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
     @Override

@@ -1,10 +1,11 @@
 package com.example.saasdemo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
+/**
+ * @author zhangjinqi
+ */
 @Data
 public class ConfigDto {
    @JsonFormat

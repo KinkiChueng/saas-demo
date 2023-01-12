@@ -8,6 +8,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author zhangjinqi
+ */
 public class FeignConfig implements RequestInterceptor {
 
     @Override

@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
+/**
+ * @author zhangjinqi
+ */
 @Slf4j
 public class TenantIntercepter implements HandlerInterceptor {
     @Resource

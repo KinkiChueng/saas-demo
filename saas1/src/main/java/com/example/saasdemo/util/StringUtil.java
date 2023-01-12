@@ -1,5 +1,8 @@
 package com.example.saasdemo.util;
 
+/**
+ * @author zhangjinqi
+ */
 public class StringUtil {
     public static String toLowerCaseFirstOne(String str) {
         if (Character.isLowerCase(str.charAt(0)))

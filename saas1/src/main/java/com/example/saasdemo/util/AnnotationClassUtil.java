@@ -1,5 +1,6 @@
 package com.example.saasdemo.util;
 
+import com.example.saasdemo.constant.RefreshUrlConstant;
 import com.example.saasdemo.custom.annotation.FixValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -10,17 +11,15 @@ import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.util.ClassUtils;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author zhangjinqi
+ */
 @Slf4j
 public class AnnotationClassUtil {
-    private final static String BASE_PACKAGE = "com.example.saasdemo";
-    private final static String RESOURCE_PATTERN = "/**/*.class";
-
-
     public static List<String> searchLabelContainedClass() {
         List<String> classList = new ArrayList<>();
 
@@ -28,7 +27,7 @@ public class AnnotationClassUtil {
         ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
         try {
             String pattern = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
-                    ClassUtils.convertClassNameToResourcePath(BASE_PACKAGE) + RESOURCE_PATTERN;
+                    ClassUtils.convertClassNameToResourcePath(RefreshUrlConstant.BASE_PACKAGE) + RefreshUrlConstant.RESOURCE_PATTERN;
             Resource[] resources = resourcePatternResolver.getResources(pattern);
             //MetadataReader 的工厂类
             MetadataReaderFactory readerfactory = new CachingMetadataReaderFactory(resourcePatternResolver);

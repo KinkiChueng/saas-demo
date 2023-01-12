@@ -1,5 +1,8 @@
 package com.example.saasdemo.constant;
 
+/**
+ * @author zhangjinqi
+ */
 public class RefreshUrlConstant {
     public static final String REFRESH_CONFIG_URL = "/nacos/refreshValueScope";
     public static final String UPDATE_CONFIG_URL = "/nacos/updateConfigValue";
@@ -14,4 +17,7 @@ public class RefreshUrlConstant {
     public static final String DATASOURCE_PASSWORD = "${spring.datasource.cheetahdb.password}";
 
     public static final Long DEFAULT_TENANT_ID = 65L;
+
+    public final static String BASE_PACKAGE = "com.example.saasdemo";
+    public final static String RESOURCE_PATTERN = "/**/*.class";
 }

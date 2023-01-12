@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * @author zhangjinqi
+ */
 @Configuration
 @RefreshScope
 @ConfigurationProperties(prefix = "tenant")

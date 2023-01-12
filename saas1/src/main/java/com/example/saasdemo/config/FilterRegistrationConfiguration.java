@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
 
+/**
+ * @author zhangjinqi
+ */
 @Configuration
 public class FilterRegistrationConfiguration {
     @Bean

@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zhangjinqi
+ */
 @Slf4j
 public class RefreshScopeFilter implements Filter {
 
