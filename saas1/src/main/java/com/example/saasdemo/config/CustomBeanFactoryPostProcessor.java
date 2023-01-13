@@ -40,13 +40,13 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
             @Override
             public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) {
                 ReflectionUtils.doWithLocalFields(bean.getClass(), field -> {
-                    FixValue customValue = field.getAnnotation(FixValue.class);
+                    FixValue fixValue = field.getAnnotation(FixValue.class);
 
                     //取出session中的User
-                    if (customValue != null) {
+                    if (fixValue != null) {
                         ReflectionUtils.makeAccessible(field);
 
-                        String propertyName = customValue.propertyName();
+                        String propertyName = fixValue.propertyName();
                         if (propertyName != null && !"".equals(propertyName)) {
                             if (!propertyName.startsWith("$")) {
                                 field.set(bean, propertyName);
