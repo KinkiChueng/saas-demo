@@ -1,0 +1,19 @@
+nacos:
+  tenant: a
+server:
+  port: 9702
+spring:
+  datasource:
+    cheetahdb:
+      url: jdbc:mysql://10.50.133.143:3306/metadata
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: etl
+      password: gwmfcETL@2019
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    generator:
+      write_numbers_as_strings: false
+    parser:
+      allow_unquoted_control_chars: true

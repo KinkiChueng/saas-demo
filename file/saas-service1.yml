@@ -1,0 +1,44 @@
+nacos:
+  tenant: aadfg
+server:
+  port: 9701
+spring:
+  kafka:
+    bootstrap-servers: 10.50.133.139:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: regulatoryReportGroup
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+  datasource:
+    cheetahdb:
+      url: jdbc:mysql://10.50.133.143:3306/metadata
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: etl
+      password: gwmfcETL@2019
+      default-auto-commit: true
+      auto-commit: true
+      maximum-pool-size: 100
+      max-idle: 10
+      max-wait: 10000
+      min-idle: 5
+      initial-size: 5
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 18800
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    generator:
+      write_numbers_as_strings: false
+    parser:
+      allow_unquoted_control_chars: true
