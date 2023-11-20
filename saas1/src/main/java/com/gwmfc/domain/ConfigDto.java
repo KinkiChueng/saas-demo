@@ -1,4 +1,4 @@
-package com.example.saasdemo.dto;
+package com.gwmfc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -8,7 +8,6 @@ import lombok.Data;
  */
 @Data
 public class ConfigDto {
-   @JsonFormat
     private Long tenantId;
     private String configName;
     private String configValue;

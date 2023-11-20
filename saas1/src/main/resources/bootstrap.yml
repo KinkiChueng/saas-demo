@@ -9,14 +9,11 @@ spring:
         username: nacos
         password: Nacos@qwer.com
         namespace: local_nacos
-      config:
-        server-addr: ${NACOS_SERVER:10.50.133.144:8848}
-        username: nacos
-        password: Nacos@qwer.com
-        group: DEFAULT_GROUP
-        file-extension: yaml
-        shared-configs[0]:
-          data-id: multi-tenant-datasource.yaml
-          group: DEFAULT_GROUP
-          refresh: true
-
+    config:
+      uri: http://localhost:9092/ncs
+      fail-fast: true
+      name: saas-service1,multi-tenant-datasource
+      label: saas-service1
+      profile: 95
+      username: admin
+      password: admin

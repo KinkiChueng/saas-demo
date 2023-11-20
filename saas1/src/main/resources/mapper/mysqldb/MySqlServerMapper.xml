@@ -10,7 +10,7 @@
     </select>
 
     <select id="selectConfigValue" resultType="java.lang.String">
-        select `value` from saas_config where property_name = #{propertyName} and tenant_id = #{tenantId}
+        select `value` from saas_config where property_name = #{propertyName} and `tenant_id` = #{tenantId}
     </select>
 
 </mapper>

@@ -44,6 +44,7 @@ public class TenantIntercepter implements HandlerInterceptor {
         //将解析的用户结果先放入session中
         request.getSession().setAttribute("currentUser", user);
 //        String tenantId = JwtUtil.decode(token, "tenantId");
+        //todo 从当前的配置文件中获取数据库配置参数 注入动态数据源
         Map<Long, Map<String, String>> allDatasourceMap = mappingDataSourceConstant.getDatasource();
         Map<String, String> tenantDataSource = allDatasourceMap.get(user.getTenantId());
         if (null != tenantDataSource && tenantDataSource.size() > 0) {
@@ -61,6 +62,7 @@ public class TenantIntercepter implements HandlerInterceptor {
             servletContext.setAttribute("tenantId", user.getTenantId());
             RefreshScope refreshScope = webApplicationContext.getBean(RefreshScope.class);
             // 手动刷新全部配置
+            //todo 从nacos的不同namespace下读取配置
             refreshScope.refreshAll();
         }
         return true;

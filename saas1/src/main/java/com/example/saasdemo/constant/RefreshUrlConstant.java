@@ -16,7 +16,7 @@ public class RefreshUrlConstant {
     public static final String DATASOURCE_USERNAME = "${spring.datasource.cheetahdb.username}";
     public static final String DATASOURCE_PASSWORD = "${spring.datasource.cheetahdb.password}";
 
-    public static final Long DEFAULT_TENANT_ID = 65L;
+    public static final Long DEFAULT_TENANT_ID = 95L;
 
     public final static String BASE_PACKAGE = "com.example.saasdemo";
     public final static String RESOURCE_PATTERN = "/**/*.class";

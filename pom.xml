@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>com.gwmfc</groupId>
                 <artifactId>dgp</artifactId>
-                <version>1.0.5-RELEASE</version>
+                <version>1.0.8-RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -39,8 +39,9 @@
             <dependency>
                 <groupId>com.gwmfc</groupId>
                 <artifactId>dgp-common</artifactId>
-                <version>1.0.5-RELEASE</version>
+                <version>1.0.8-RELEASE</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

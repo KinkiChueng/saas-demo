@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 刷新单个配置
  * @author zhangjinqi
  */
 @Slf4j
@@ -60,7 +61,7 @@ public class RefreshScopeFilter implements Filter {
                 ServletContext servletContext = webApplicationContext.getServletContext();
                 Long tenantId = (Long) servletContext.getAttribute("tenantId");
 
-                if (null != tenantId && null != configDto && tenantId.equals(((Double) configDto.get("tenant_id")).longValue())) {
+//                if (null != tenantId && null != configDto && tenantId.equals(((Double) configDto.get("tenant_id")).longValue())) {
                     List<String> classPathList = AnnotationClassUtil.searchLabelContainedClass();
                     classPathList.forEach(classPath -> {
                         String className = classPath.substring(classPath.lastIndexOf(".")+1);
@@ -68,7 +69,7 @@ public class RefreshScopeFilter implements Filter {
                             refreshScope.refresh(StringUtil.toLowerCaseFirstOne(className));
                         }
                     });
-                }
+//                }
             }
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (Exception e) {
